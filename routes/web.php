@@ -1,26 +1,24 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 
-//show all posts
-Route::get('/',[PostController::class, 'index'])->name('posts.index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Show create post form
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-//Handle form submit and save post
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+// Your post routes
+Route::resource('posts', PostController::class)->middleware('auth');
 
-// Show sigle post
-Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-//show edit form
-Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit'); 
-
-//Handle form update and save
-Route::put('/post/{id}', [PostController::class, 'update'])->name('posts.update');
-
-
-//
-Route::delete('/posts/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
+require __DIR__.'/auth.php';

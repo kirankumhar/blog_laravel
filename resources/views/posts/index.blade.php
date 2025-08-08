@@ -8,6 +8,12 @@
 
     <ul>
         @foreach ($posts as $post)
+        <li>
+
+        
+            @if($post->image)
+                <img src="{{ asset('storage/' . $post->image) }}" width="150">
+            @endif
             <h2>
                 <a href="{{ route('posts.show', $post->id) }}">
                     {{ $post->title }}
@@ -20,6 +26,8 @@
                 @method('DELETE')
                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">Delete</button>
             </form>
+
+        </li>
         @endforeach
     </ul>
 </x-layout>

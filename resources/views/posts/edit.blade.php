@@ -9,15 +9,23 @@
         </ul>
     @endif
 
-    <form action="{{ route('posts.update', $post->id) }}" method="POST">
+    <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <label>Title:</label><br>
-        <input type="text" name="title" value="{{ old('title', $post->title) }}"><br><br>
+        <label>Title</label>
+        <input type="text" name="title" value="{{ old('title', $post->title) }}" required><br><br>
 
-        <label>Content:</label><br>
-        <textarea name="content" rows="5">{{ old('content', $post->content) }}</textarea><br><br>
+        <label>Content</label>
+        <textarea name="content" required>{{ old('content', $post->content) }}</textarea><br><br>
+
+        <label>Image</label>
+        <input type="file" name="image">
+
+        @if($post->image)
+            <p>Current Image:</p>
+            <img src="{{ asset('storage/' . $post->image) }}" width="150"><br><br>
+        @endif
 
         <button type="submit">Update Post</button>
     </form>
