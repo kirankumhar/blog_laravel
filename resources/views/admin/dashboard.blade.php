@@ -1,20 +1,57 @@
 <x-layout>
     <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Admin Dashboard</h1>
+    <h2 class="text-2xl font-bold mb-4">Admin Dashboard</h2>
+    
 
     {{-- Stats Cards --}}
-    <div class="grid grid-cols-3 gap-6">
-        <div class="bg-blue-500 text-white p-4 rounded-lg">
-            <h2 class="text-lg">Total Blogs</h2>
-            <p class="text-2xl font-bold">{{ $totalBlogs }}</p>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Blogs</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalBlogs }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="bg-green-500 text-white p-4 rounded-lg">
-            <h2 class="text-lg">Total Categories</h2>
-            <p class="text-2xl font-bold">{{ $totalCategories }}</p>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Categories</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalCategories }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="bg-purple-500 text-white p-4 rounded-lg">
-            <h2 class="text-lg">Total Users</h2>
-            <p class="text-2xl font-bold">{{ $totalUsers }}</p>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total User</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalUsers }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -33,7 +70,7 @@
                 @foreach($recentBlogs as $blog)
                 <tr>
                     <td class="border p-2">{{ $blog->title }}</td>
-                    <td class="border p-2">{{ $blog->category->name ?? 'Uncategorized' }}</td>
+                    <td class="border p-2">{{ $blog->category->title ?? 'Uncategorized' }}</td>
                     <td class="border p-2">{{ $blog->created_at->format('d M Y') }}</td>
                 </tr>
                 @endforeach
