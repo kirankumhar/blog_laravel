@@ -17,9 +17,7 @@ class DashboardController extends Controller
         $totalBlogs = Blog::count();
         $totalCategories = Category::count();
         $totalUsers = User::count();
-
         $recentBlogs = Blog::latest()->take(5)->get();
-
         return view('admin.dashboard', compact('totalBlogs', 'totalCategories', 'totalUsers', 'recentBlogs'));
     }
 }
