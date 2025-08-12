@@ -52,7 +52,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('dashboard') }}">My Blog</a>
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
             <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>

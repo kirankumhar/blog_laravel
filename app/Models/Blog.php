@@ -18,6 +18,7 @@ class Blog extends Model
         'content',
         'image',
         'categories_id', // foreign key
+        'status',
     ];
 
 
