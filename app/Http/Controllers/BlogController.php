@@ -144,4 +144,11 @@ class BlogController extends Controller
 
         return redirect()->route('blogs.index')->with('success', 'Post deleted successfully!');
     }
+
+
+    public function apiIndex()
+    {
+        $blogs = Blog::all(); // get all blogs
+        return response()->json($blogs); // return as JSON
+    }
 }
